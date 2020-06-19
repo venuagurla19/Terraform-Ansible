@@ -1,0 +1,40 @@
+---
+- hosts: "all"
+  name: "Install and Configure Nginx Proxy"
+  remote_user: "ubuntu"
+  vars:
+    ansible_python_interpreter: "/usr/bin/python3"
+  gather_facts: false
+
+
+  pre_tasks:
+    - name: "Wait for instance availability"
+      wait_for_connection:
+        timeout: 120
+    - name: "Gather facts"
+      setup:
+
+
+  tasks:
+    - name: "Install latest version of Nginx"
+      become: true
+      apt:
+        name: "nginx"
+        state: "present"
+        update_cache: "yes"
+
+    - name: "Upload Nginx conf file"
+      become: true
+      copy:
+        dest: "/etc/nginx/conf.d/demo.conf"
+        content: |
+          server {
+            listen 80;
+          }
+
+    - name: "Restart Nginx service"
+      become: true
+      service:
+        enabled: "yes"
+        name: "nginx"
+        state: "restarted"
