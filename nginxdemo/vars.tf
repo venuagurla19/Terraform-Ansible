@@ -39,9 +39,3 @@ variable "ssh_pub_key" {
   description = "The public SSH key for Ansible"
   type        = string
 }
-
-variable "vpc_subnet" {
-  description = "The private subnet to assign to the vpc"
-  type        = string
-  default     = "10.0.0.0/16"
-}
