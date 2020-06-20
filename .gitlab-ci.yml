@@ -1,0 +1,28 @@
+---
+image:
+    name: hashicorp/terraform:0.12.26
+    entrypoint:
+        - /usr/bin/env
+
+before_script:
+    # install ansible-lint
+    - apk add -U ansible-lint
+    - terraform --version
+    - ansible-lint --version
+
+
+stages:
+    - accept
+
+terraform:
+    stage: accept
+    script:
+        - cd understanding-terraform-ansible
+        - terraform init
+        - terraform fmt -check
+        - terraform validate
+
+ansible:
+    stage: accept
+    script:
+        - ansible-lint understanding-terraform-ansible/playbooks/nginx_server.yaml
