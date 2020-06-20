@@ -48,7 +48,7 @@ resource "aws_instance" "nginx_proxy" {
 }
 
 
-# the security group for the server
+# allow incoming/outgoing connections to nginx server
 resource "aws_security_group" "nginx_sg" {
   name        = "uta-nginx-sg"
   description = "Allow Ansible and Web Traffic"
@@ -62,11 +62,11 @@ resource "aws_security_group" "nginx_sg" {
   }
 
   ingress {
-    description = "Allow HTTP from Whitelist"
-    from_port   = 80
-    to_port     = 80
+    description = "Allow all tcp to port 8000"
+    from_port   = 8000
+    to_port     = 8000
     protocol    = "tcp"
-    cidr_blocks = var.mgmt_whitelist
+    cidr_blocks = ["0.0.0.0/0"]
   }
 
   egress {
