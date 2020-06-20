@@ -29,7 +29,7 @@
         dest: "/etc/nginx/conf.d/demo.conf"
         content: |
           server {
-            listen 80;
+            listen 8000;
           }
 
     - name: "Restart Nginx service"

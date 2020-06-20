@@ -14,11 +14,6 @@ variable "nginx_ami" {
   default = "ami-01cd5988241256cd8"
 }
 
-variable "nginx_availability_zone" {
-  description = "AWS availibity zone for Nginx EC2"
-  type        = string
-}
-
 variable "nginx_instance_size" {
   description = "The size of the Nginx EC2 instance"
   type        = string
@@ -28,11 +23,13 @@ variable "nginx_instance_size" {
 variable "nginx_region" {
   description = "AWS region for Nginx EC2"
   type        = string
+  default     = "us-east-2"
 }
 
 variable "ssh_priv_key_path" {
   description = "Path to private SSH key for Ansible to use"
   type        = string
+  default     = "/tmp/nginx-id_rsa"
 }
 
 variable "ssh_pub_key" {
