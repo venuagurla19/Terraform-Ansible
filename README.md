@@ -6,7 +6,7 @@ Code that accompanies the Medium post [WireGuard Relay Infrastructure as Code](h
 This will be a series of posts on WireGuard and how to deploy a personal VPN server on AWS using Terraform and Ansible. The first two posts will be about understanding the technology, and the third post will put it together with an automated deployment.
 
 1. [Understanding WireGuard: A Modern VPN on a Virtual Interface](https://medium.com/@yarbrough.b/understanding-wireguard-2d8d9af987eb)
-2. Understanding Terraform with Ansible
+2. [Understanding Terraform and Ansible](https://medium.com/@yarbrough.b/understanding-terraform-and-ansible-438af22c0771)
 3. Deploying a WireGuard Relay Server
 
 Source code for the posts is at https://gitlab.com/byarbrough/wg-relay-iac
